@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  devise :database_authenticatable, :registerable, :recoverable, :validatable, :confirmable
+  devise :confirmable, :database_authenticatable, :registerable, :recoverable, :validatable
 
   has_one :about, dependent: :destroy
 

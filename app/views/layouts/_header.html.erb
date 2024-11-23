@@ -17,7 +17,6 @@
         <div class="flex items-center space-x-4">
           <!-- Large Screens: Profile and Sign Out Links -->
           <div class="hidden md:flex items-center space-x-4">
-            <%= link_to "Profile", profile_path, class: "text-gray-900 hover:text-gray-700" %>
             <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "text-gray-900 hover:text-gray-700" %>
           </div>
 
