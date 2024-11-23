@@ -14,8 +14,6 @@ gem "jsbundling-rails"
 gem "turbo-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
-# Bundle and process CSS [https://github.com/rails/cssbundling-rails]
-gem "cssbundling-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
@@ -54,6 +52,11 @@ gem "cancancan"
 
 # Local formatting of time
 gem "local_time"
+
+# inline SVGs
+gem "inline_svg"
+
+gem "tailwindcss-rails"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
