@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #
 # Uncomment this and change the path if necessary to include your own
 # components.
@@ -14,7 +15,6 @@ SimpleForm.setup do |config|
     hint_class: "text-gray-500 text-sm",
     error_class: "field-with-errors",
     valid_class: "field-without-errors" do |b|
-
     ## Extensions enabled by default
     b.use :html5
     b.use :placeholder
