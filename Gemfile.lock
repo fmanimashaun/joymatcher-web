@@ -260,7 +260,6 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.3.9)
-    rolify (6.0.1)
     rspec-core (3.13.2)
       rspec-support (~> 3.13.0)
     rspec-expectations (3.13.3)
@@ -401,7 +400,6 @@ DEPENDENCIES
   propshaft
   puma (>= 5.0)
   rails (~> 8.0.0)
-  rolify
   rspec-rails (~> 7.1)
   rubocop-rails-omakase
   selenium-webdriver

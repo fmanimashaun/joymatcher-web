@@ -47,7 +47,6 @@ gem "simple_form"
 gem "devise", "~> 4.9"
 
 # authorization
-gem "rolify"
 gem "cancancan"
 
 # Local formatting of time
