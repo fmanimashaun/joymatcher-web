@@ -1,4 +1,4 @@
-<header class="bg-white shadow">
+<header class="bg-white">
   <div class="mx-auto max-w-7xl px-4 py-4 sm:py-6 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center">
       <!-- Logo Section -->
@@ -6,7 +6,7 @@
         <%= link_to root_path do %>
         <div class="flex items-center space-x-1.5 sm:space-x-2">
           <%= inline_svg "logo.svg", class: "h-10 sm:h-12 w-auto" %>
-          <%= inline_svg "logo_text.svg", class: "hidden md:block h-3 sm:h-3.5 w-auto" %>
+          <%= inline_svg "logo_text.svg", class: "hidden xl:block h-3 sm:h-3.5 w-auto" %>
         </div>
         <% end %>
       </div>
@@ -16,12 +16,34 @@
         <% if user_signed_in? %>
         <div class="flex items-center space-x-4">
           <!-- Large Screens: Profile and Sign Out Links -->
-          <div class="hidden md:flex items-center space-x-4">
-            <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "text-gray-900 hover:text-gray-700" %>
+          <div class="hidden lg:flex items-center space-x-8 xl:space-x-12">
+            <div class="space-x-2 flex item-center xl:space-x-4">
+              <%= link_to edit_user_settings_path(current_user), class: "flex items-center p-2 rounded-lg hover:bg-gray-200 focus:outline-none" do %>
+              <%= inline_svg "Filter.svg", class: "h-5 w-5 xl::h-7 xl::w-7" %>
+              <% end %>
+              <%= link_to user_notifications_path(current_user), class: "flex items-center p-2 rounded-lg hover:bg-gray-200 focus:outline-none" do %>
+              <%= inline_svg "Notification.svg", class: "h-5 w-5 xl::h-7 xl::w-7" %>
+              <% end %>
+
+              <%= link_to user_profile_path(current_user), class: "flex items-center p-2 rounded-lg hover:bg-gray-200 focus:outline-none" do %>
+              <%= inline_svg "Profile.svg", class: "h-5 w-5 xl::h-7 xl::w-7" %>
+              <% end %>
+            </div>
+
+            <div class="flex items-center space-x-1 text-base xl:text-lg">
+              <span class="">Membership Status:</span>
+              <%= inline_svg 'Star.svg', class: 'w-5 h-5' %>
+              <strong class="font-bold">Basic</strong>
+            </div>
+
+
+            <button class="bg-black text-white py-3 px-8 rounded-lg">
+              Upgrade Account
+            </button>
           </div>
 
           <!-- Mobile Menu Button -->
-          <button class="flex md:hidden items-center" id="hamburger-button">
+          <button class="flex lg:hidden items-center" id="hamburger-button">
             <%= inline_svg "hamburger.svg", class: "h-6 w-6" %>
           </button>
         </div>

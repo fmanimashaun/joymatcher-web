@@ -1,13 +1,11 @@
 Rails.application.routes.draw do
-  get "notifications/index"
-  get "profiles/show"
-  get "profiles/edit"
-  get "profiles/update"
-  get "messages/index"
-  get "messages/show"
-  get "messages/create"
-  get "settings/edit"
-  get "settings/update"
+  # User-specific routes
+  resources :users, only: [] do
+    resources :notifications, only: [ :index ]
+    resource :profile, only: [ :show, :edit, :update ]
+    resource :settings, only: [ :edit, :update ]
+  end
+
   devise_for :users
 
   # Defines the root path route ("/")
