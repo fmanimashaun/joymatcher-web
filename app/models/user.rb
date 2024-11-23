@@ -1,5 +1,7 @@
 class User < ApplicationRecord
-  devise :database_authenticatable, :registerable, :recoverable, :validatable, :confirmable,
+  devise :database_authenticatable, :registerable, :recoverable, :validatable, :confirmable
+
+  has_one :about, dependent: :destroy
 
   # Constants
   PASSWORD_FORMAT = /\A
@@ -31,6 +33,9 @@ class User < ApplicationRecord
 
   # Custom validation for age
   validate :must_be_at_least_18_years_old
+
+  # Delegate onboarded? to the associated About model
+  delegate :onboarded?, to: :about, allow_nil: true
 
   private
 
