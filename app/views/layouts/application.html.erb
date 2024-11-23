@@ -23,15 +23,15 @@
 
 
   <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
   <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
   <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
   <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
 </head>
 
 <body class="h-fulll">
-  <%= render "layouts/header", title: @page_title %>
+  <%= render "layouts/header" %>
   <main>
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 my-4 sm:my-6">
       <%= yield %>

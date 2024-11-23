@@ -1,33 +1,43 @@
-<%# locals: (title:) %>
-
 <header class="bg-white shadow">
   <div class="mx-auto max-w-7xl px-4 py-4 sm:py-6 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center">
+      <!-- Logo Section -->
       <div class="flex items-center space-x-4">
         <%= link_to root_path do %>
         <div class="flex items-center space-x-1.5 sm:space-x-2">
           <%= inline_svg "logo.svg", class: "h-10 sm:h-12 w-auto" %>
-          <%= inline_svg "logo_text.svg", class: "h-3 sm:h-3.5 w-auto" %>
+          <%= inline_svg "logo_text.svg", class: "hidden md:block h-3 sm:h-3.5 w-auto" %>
         </div>
         <% end %>
       </div>
+
+      <!-- Navigation Section -->
       <div>
         <% if user_signed_in? %>
         <div class="flex items-center space-x-4">
-          <%= link_to "Profile", profile_path, class: "text-gray-900 hover:text-gray-700" %>
-          <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "text-gray-900 hover:text-gray-700" %>
+          <!-- Large Screens: Profile and Sign Out Links -->
+          <div class="hidden md:flex items-center space-x-4">
+            <%= link_to "Profile", profile_path, class: "text-gray-900 hover:text-gray-700" %>
+            <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "text-gray-900 hover:text-gray-700" %>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button class="flex md:hidden items-center" id="hamburger-button">
+            <%= inline_svg "hamburger.svg", class: "h-6 w-6" %>
+          </button>
         </div>
         <% else %>
         <div class="flex items-center space-x-4">
-          <%= link_to "Log in", new_user_session_path, class: "text-base sm:text-lg font-bold" %>
+          <!-- Large Screens: Login Link -->
+          <%= link_to "Log in", new_user_session_path, class: "hidden md:block text-base sm:text-lg font-bold" %>
 
-          <!-- Hamburger Button (only visible on small screens) -->
-          <button class="lg:hidden flex items-center bg-red-500" id="hamburger-button">
+          <!-- Mobile Menu Button -->
+          <button class="flex md:hidden items-center" id="hamburger-button">
             <%= inline_svg "hamburger.svg", class: "h-6 w-6" %>
           </button>
         </div>
         <% end %>
-
       </div>
     </div>
+  </div>
 </header>
