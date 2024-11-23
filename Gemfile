@@ -14,8 +14,6 @@ gem "jsbundling-rails"
 gem "turbo-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
-# Bundle and process CSS [https://github.com/rails/cssbundling-rails]
-gem "cssbundling-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
@@ -42,6 +40,23 @@ gem "thruster", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+# simplifies form creation
+gem "simple_form"
+
+# authentication
+gem "devise", "~> 4.9"
+
+# authorization
+gem "cancancan"
+
+# Local formatting of time
+gem "local_time"
+
+# inline SVGs
+gem "inline_svg"
+
+gem "tailwindcss-rails"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
@@ -51,6 +66,18 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  # Rspect testing framework [https://rspec.info/]
+  gem "rspec-rails", "~> 7.1"
+
+  # FactoryBot is a fixtures replacement with a more straightforward syntax [
+  gem "factory_bot_rails"
+
+  # A library for generating fake data
+  gem "faker"
+
+  # A library for testing email
+  gem "letter_opener"
 end
 
 group :development do
@@ -58,3 +85,9 @@ group :development do
   gem "web-console"
 end
 
+group :test do
+  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  gem "capybara"
+  gem "selenium-webdriver"
+  gem "simplecov", require: false
+end

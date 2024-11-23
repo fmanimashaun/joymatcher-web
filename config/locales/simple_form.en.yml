@@ -1,0 +1,25 @@
+en:
+  simple_form:
+    labels:
+      user:
+        email: 'Email'
+        password: 'Password'
+        gender: 'Gender'
+        interest: 'Interest'
+        dob_day: 'Day of Birth'
+        dob_month: 'Month of Birth'
+        dob_year: 'Year of Birth'
+
+    placeholders:
+      user:
+        email: 'Enter your email'
+        password: 'Enter your password'
+        dob_day: 'Select a day'
+        dob_month: 'Select a month'
+        dob_year: 'Select a year'
+
+    helpers:
+      submit:
+        user:
+          create: 'Register'
+          update: 'Update Profile'
