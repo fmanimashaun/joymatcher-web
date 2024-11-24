@@ -1,64 +1,122 @@
-<header class="bg-white">
+<header class="bg-white" data-controller="mobile-menu"> 
   <div class="mx-auto max-w-7xl px-4 py-4 sm:py-6 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center">
-      <!-- Logo Section -->
+
       <div class="flex items-center space-x-4">
         <%= link_to root_path do %>
-        <div class="flex items-center space-x-1.5 sm:space-x-2">
-          <%= inline_svg "logo.svg", class: "h-10 sm:h-12 w-auto" %>
-          <%= inline_svg "logo_text.svg", class: "hidden xl:block h-3 sm:h-3.5 w-auto" %>
-        </div>
-        <% end %>
-      </div>
-
-      <!-- Navigation Section -->
-      <div>
-        <% if user_signed_in? %>
-        <div class="flex items-center space-x-4">
-          <!-- Large Screens: Profile and Sign Out Links -->
-          <div class="hidden lg:flex items-center space-x-8 xl:space-x-12">
-            <div class="space-x-2 flex item-center xl:space-x-4">
-              <%= link_to edit_user_settings_path(current_user), class: "flex items-center p-2 rounded-lg hover:bg-gray-200 focus:outline-none" do %>
-              <%= inline_svg "Filter.svg", class: "h-5 w-5 xl::h-7 xl::w-7" %>
-              <% end %>
-              <%= link_to user_notifications_path(current_user), class: "flex items-center p-2 rounded-lg hover:bg-gray-200 focus:outline-none" do %>
-              <%= inline_svg "Notification.svg", class: "h-5 w-5 xl::h-7 xl::w-7" %>
-              <% end %>
-
-              <%= link_to user_profile_path(current_user), class: "flex items-center p-2 rounded-lg hover:bg-gray-200 focus:outline-none" do %>
-              <%= inline_svg "Profile.svg", class: "h-5 w-5 xl::h-7 xl::w-7" %>
-              <% end %>
-            </div>
-
-            <div class="flex items-center space-x-1 text-base xl:text-lg">
-              <span class="">Membership Status:</span>
-              <%= inline_svg 'Star.svg', class: 'w-5 h-5' %>
-              <strong class="font-bold">Basic</strong>
-            </div>
-
-
-            <button class="bg-black text-white py-3 px-8 rounded-lg">
-              Upgrade Account
-            </button>
+          <div class="flex items-center space-x-1.5 sm:space-x-2">
+            <%= inline_svg "logo.svg", class: "h-10 sm:h-12 w-auto" %>
+            <%= inline_svg "logo_text.svg", class: "hidden xl:block h-3 sm:h-3.5 w-auto" %>
           </div>
-
-          <!-- Mobile Menu Button -->
-          <button class="flex lg:hidden items-center" id="hamburger-button">
-            <%= inline_svg "hamburger.svg", class: "h-6 w-6" %>
-          </button>
-        </div>
-        <% else %>
-        <div class="flex items-center space-x-4">
-          <!-- Large Screens: Login Link -->
-          <%= link_to "Log in", new_user_session_path, class: "hidden md:block text-base sm:text-lg font-bold" %>
-
-          <!-- Mobile Menu Button -->
-          <button class="flex md:hidden items-center" id="hamburger-button">
-            <%= inline_svg "hamburger.svg", class: "h-6 w-6" %>
-          </button>
-        </div>
         <% end %>
       </div>
+
+      <nav>
+        <div> 
+          <% if user_signed_in? %>
+            <div class="flex items-center space-x-4">
+              <div class="hidden lg:flex items-center space-x-8 xl:space-x-12">
+                <div class="space-x-2 flex items-center xl:space-x-4"> 
+                  <%= link_to edit_user_settings_path(current_user), class: "flex items-center p-2 rounded-lg hover:bg-gray-200 focus:outline-none" do %>
+                    <%= inline_svg "Filter.svg", class: "h-5 w-5 xl:h-7 xl:w-7" %> 
+                  <% end %>
+                  <%= link_to user_notifications_path(current_user), class: "flex items-center p-2 rounded-lg hover:bg-gray-200 focus:outline-none" do %>
+                    <%= inline_svg "Notification.svg", class: "h-5 w-5 xl:h-7 xl:w-7" %>
+                  <% end %>
+                  <%= link_to user_profile_path(current_user), class: "flex items-center p-2 rounded-lg hover:bg-gray-200 focus:outline-none" do %>
+                    <%= inline_svg "Profile.svg", class: "h-5 w-5 xl:h-7 xl:w-7" %>
+                  <% end %>
+                </div>
+  
+                <div class="flex items-center space-x-1 text-base xl:text-lg">
+                  <span>Membership Status:</span>
+                  <%= inline_svg 'Star.svg', class: 'w-5 h-5' %>
+                  <strong class="font-bold">
+                    <%= current_user.membership %> 
+                  </strong>
+                </div>
+  
+                <%= link_to "Upgrade Account", upgrades_path, class: "bg-black text-white py-3 px-8 rounded-lg" %>
+              </div>
+  
+              <button 
+                class="lg:hidden" 
+                aria-label="Toggle mobile menu" 
+                aria-expanded="false"
+                data-action="mobile-menu#toggle" 
+                data-mobile-menu-target="button"
+              >
+                <%= inline_svg "hamburger.svg", class: "h-6 w-6" %>
+              </button>
+            </div>
+          <% else %>
+            <div class="flex items-center space-x-4">
+              <%= link_to "Log in", new_user_session_path, class: "hidden md:block text-base sm:text-lg font-bold" %>
+  
+              <button 
+                class="md:hidden" 
+                aria-label="Toggle mobile menu" 
+                aria-expanded="false"
+                data-action="mobile-menu#toggle" 
+                data-mobile-menu-target="button"
+              >
+                <%= inline_svg "hamburger.svg", class: "h-6 w-6" %>
+              </button>
+            </div>
+          <% end %>
+        </div>
+      </nav>
     </div>
+  </div>
+
+  <div 
+    class="lg:hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 transform -translate-x-full transition-transform duration-300 ease-in-out" 
+    id="mobile-menu" 
+    aria-hidden="true"
+    data-mobile-menu-target="menu"
+  >
+    <div class="w-72 h-full bg-white p-4 relative"> 
+      <div class="flex justify-between items-center">
+        <%= link_to root_path do %>
+          <div class="flex items-center space-x-1.5 sm:space-x-2">
+            <%= inline_svg "logo.svg", class: "h-10 sm:h-12 w-auto" %>
+            <%= inline_svg "logo_text.svg", class: "block h-3 sm:h-3.5 w-auto" %>
+          </div>
+        <% end %>
+
+        <button 
+          class="text-gray-600 absolute top-4 right-4"  
+          aria-label="Close menu" 
+          data-action="mobile-menu#close"
+        >
+          <%= inline_svg "Close.svg", class: "h-5 w-5" %>
+        </button>
+      </div>
+
+      <ul class="mt-6 space-y-4">
+        <% if user_signed_in? %>
+          <li><%= link_to "Settings", edit_user_settings_path(current_user), class: "text-gray-800 hover:text-gray-600" %></li>
+        <% end %>
+      </ul>
+
+      <div class="absolute flex flex-col bottom-0 left-0 w-full p-4 space-y-4">
+        <% if user_signed_in? %>
+          <div class="flex items-center space-x-1 text-base xl:text-lg">
+            <span>Membership Status:</span>
+            <%= inline_svg 'Star.svg', class: 'w-5 h-5' %>
+            <strong class="font-bold">
+              <%= current_user.membership %> 
+            </strong>
+          </div>
+          <%= link_to "Upgrade Account", upgrades_path, class: "bg-black text-white py-3 px-8 rounded-lg" %>
+          <div class="w-full h-px bg-gray-300 my-4"></div> 
+          <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "text-base sm:text-lg font-bold" %>
+        <% else %>
+          <%= link_to "Log in", new_user_session_path, class: "text-base sm:text-lg font-bold" %>
+        <% end %>
+      </div>
+
+
+    </div>  
   </div>
 </header>
