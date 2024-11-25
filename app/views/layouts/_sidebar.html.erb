@@ -1,4 +1,4 @@
-<aside class="hidden lg:flex border">
+<aside class="hidden lg:flex">
   <ul class="space-y-5 w-full">
     <li class="<%= current_page?(root_path) ? 'bg-red-500 text-white' : 'text-black' %> rounded-lg w-full px-4 py-2"><%= link_to "Online Now", root_path, class: "" %></li>
     <li class="<%= current_page?(edit_user_settings_path(current_user)) ? 'bg-red-500 text-white' : 'text-black' %> rounded-lg w-full px-4 py-2"><%= link_to "Settings", edit_user_settings_path(current_user), class: "" %></li>

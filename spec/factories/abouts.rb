@@ -12,6 +12,17 @@ FactoryBot.define do
     height { Faker::Number.between(from: 150, to: 200) }
     body_type { [ 'Slim', 'Average', 'Athletic' ].sample }
 
+    # Generate country using Faker
+    # country { Faker::Address.country }
+    country { 'United States' }
+
+    # Generate state using countries gem
+    state do
+      country_obj = ISO3166::Country.find_country_by_name(country)
+      subdivisions = country_obj&.subdivisions&.values || []
+      subdivisions.sample&.fetch("name", "Unknown State")
+    end
+
     # Attach images with role-based logic
     before(:create) do |about|
       if about.user.role == 'admin'

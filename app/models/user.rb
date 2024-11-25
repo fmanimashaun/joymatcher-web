@@ -35,11 +35,11 @@ class User < ApplicationRecord
             uniqueness: { case_sensitive: false }
 
   # Password validation
-  validates :password,
-            presence: true,
-            length: { within: Devise.password_length },
-            format: { with: PASSWORD_FORMAT, message: PASSWORD_FORMAT_ERROR_MESSAGE },
-            if: :password_required?
+  # validates :password,
+  #           presence: true,
+  #           length: { within: Devise.password_length },
+  #           format: { with: PASSWORD_FORMAT, message: PASSWORD_FORMAT_ERROR_MESSAGE },
+  #           if: :password_required?
 
   # Custom validation for age
   validate :must_be_at_least_18_years_old
