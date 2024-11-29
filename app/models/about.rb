@@ -18,16 +18,19 @@ class About < ApplicationRecord
   validates :ethnicity, inclusion: { in: %w[Asian Black Hispanic White Other] }, unless: :admin_user?
   validates :height, numericality: { greater_than: 0 }, unless: :admin_user?
   validates :body_type,
-            inclusion: { in: [ "Slim", "Athletic", "Average", "Curvy", "Plus Size" ] }, unless: :admin_user?
+            inclusion: { in: ["Slim", "Athletic", "Average", "Curvy", "Plus Size"] }, unless: :admin_user?
 
-  # Validate country and state presence for regular users
-  validates :country, :state, presence: true, unless: :admin_user?
+  # Validate location presence for regular users
+  validates :location, presence: true, unless: :admin_user?
+
+  # Validate goal for regular users
+  validates :goal,
+            inclusion: {
+              in: ["Friendship", "Casual Dating", "Serious Relationship", "Exploring"]
+            }, unless: :admin_user?
 
   # Custom photo validation to ensure at least one photo is attached and validates formats
   validate :photos_presence_and_format
-
-  # Custom validation for country-state correspondence
-  validate :validate_country_state_relationship, unless: :admin_user?
 
   private
 
@@ -53,15 +56,5 @@ class About < ApplicationRecord
   # Check if the associated user is an admin
   def admin_user?
     user&.role == "admin"
-  end
-
-  # Validate that the country and state are consistent (state should exist for the country)
-  def validate_country_state_relationship
-    return if country.blank? || state.blank?
-
-    country_obj = ISO3166::Country.find_country_by_name(country)
-    if country_obj && !country_obj.subdivisions.key?(state)
-      errors.add(:state, "must be a valid state for the selected country")
-    end
   end
 end

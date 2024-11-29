@@ -1,8 +1,5 @@
-<%# app/views/dashboard/show.html.erb %>
-
-  <div class="overflow-y-auto">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <%= render partial: "dashboard/card", collection: (1..100).to_a, as: :number %>
-      </div>
-  </div>
+<div class="grid grid-flow-row auto-rows-auto grid-cols-[repeat(auto-fill,272px)] gap-x-5 xl:gap-x-10 gap-y-5 mx-auto justify-center py-5">
+  <%= render partial: "dashboard/card", collection: (1..100).to_a, as: :number %>
 </div>
+
+  <%= render "layouts/footer" %>
