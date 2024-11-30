@@ -47,6 +47,16 @@ class User < ApplicationRecord
   # Delegate onboarded? to the associated About model
   delegate :onboarded?, to: :about, allow_nil: true
 
+  def age
+    return unless birthday.present?
+
+    today = Date.today
+    birth_date = birthday
+    age = today.year - birth_date.year
+    age -= 1 if today.yday < birth_date.yday
+    age
+  end
+
   private
 
   # Custom validation for age

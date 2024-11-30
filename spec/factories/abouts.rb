@@ -11,15 +11,16 @@ FactoryBot.define do
     ethnicity { [ 'Asian', 'Black', 'White' ].sample }
     height { Faker::Number.between(from: 150, to: 200) }
     body_type { [ 'Slim', 'Average', 'Athletic' ].sample }
-    country { 'Lagos' }
+    location { 'Lagos' }
+    goal { [ 'Friendship', 'Casual Dating', 'Serious Relationship', 'Exploring' ].sample }
 
     # Attach images with role-based logic
     before(:create) do |about|
       if about.user.role == 'admin'
         # Admin-specific image (SVG)
-        admin_image_path = Rails.root.join('app', 'assets', 'images', 'default_admin_image.svg')
+        admin_image_path = Rails.root.join('app', 'assets', 'images', 'default_admin_image.png')
 
-        about.photos.attach(io: File.open(admin_image_path), filename: 'default_admin_image.svg', content_type: 'image/svg+xml')
+        about.photos.attach(io: File.open(admin_image_path), filename: 'default_admin_image.png', content_type: 'image/png')
 
       else
         # Non-admin users: Attach default user image based on gender

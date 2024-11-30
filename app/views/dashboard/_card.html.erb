@@ -1,5 +1,18 @@
-<div class="bg-white p-4 rounded shadow w-44">
-  <h2>Card <%= number %></h2>
-  <p>Some card content for card <%= number %>...</p>
-  <%# Add more card-specific content here %>
+<div class="bg-gray-100 border border-gray-300 flex w-full rounded-3xl">
+  <!-- Display User's Photo -->
+  <%= image_tag user.about.photos[0].variant(resize_to_fill: [176, 176]).processed, alt: "#{user.about.firstname}'s photo", class: "w-44 h-44 object-cover rounded-tl-3xl rounded-bl-3xl" if user.about.photos.attached? %>
+  
+  <div class="flex flex-col p-3 gap-5">
+    <!-- Display Status Icon (Online Indicator) -->
+    <%= inline_svg('Status.svg', class: 'w-3 h-3') %>
+    
+    <!-- User Name and Age -->
+    <h2 class="text-sm font-bold flex flex-col">
+      <span class="truncate-name"><%= "#{user.about.firstname}," %></span>
+      <span><%= user.age %></span> <!-- Display the calculated age -->
+    </h2>
+    
+    <!-- User Location -->
+    <p class="text-xs"><%= user.about.location %></p>
+  </div>
 </div>

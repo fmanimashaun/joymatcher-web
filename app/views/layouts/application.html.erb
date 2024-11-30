@@ -30,10 +30,10 @@
   <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
 </head>
 
-<body class="h-screen m-0 grid grid-rows-[auto_1fr] gap-6">
+<body class="h-screen m-0 grid grid-rows-[auto_1fr]">
   <%= render "layouts/header" %>
 
-  <div class="bg-red w-full max-w-7xl mx-auto grid grid-cols-1 xl:grid-cols-[224px_1fr] md:grid-cols-[50px_1fr] overflow-hidden gap-8 md:gap-14">
+  <div class="w-full max-w-7xl mx-auto grid grid-cols-1 xl:grid-cols-[224px_1fr] md:grid-cols-[50px_1fr] overflow-hidden gap-8 md:gap-14 mt-6">
     <% if user_signed_in? %>
       <%= render "layouts/sidebar" %>
     <% end %>

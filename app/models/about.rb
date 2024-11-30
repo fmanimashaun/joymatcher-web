@@ -7,7 +7,7 @@ class About < ApplicationRecord
   validates :firstname, :lastname, presence: true, unless: :admin_user?
   validates :marital_status,
             inclusion: { in: %w[single married separated divorced widowed] }, unless: :admin_user?
-  validates :have_children, inclusion: { in: [true, false] }, unless: :admin_user?
+  validates :have_children, inclusion: { in: [ true, false ] }, unless: :admin_user?
   validates :education,
             inclusion: {
               in: [
@@ -18,7 +18,7 @@ class About < ApplicationRecord
   validates :ethnicity, inclusion: { in: %w[Asian Black Hispanic White Other] }, unless: :admin_user?
   validates :height, numericality: { greater_than: 0 }, unless: :admin_user?
   validates :body_type,
-            inclusion: { in: ["Slim", "Athletic", "Average", "Curvy", "Plus Size"] }, unless: :admin_user?
+            inclusion: { in: [ "Slim", "Athletic", "Average", "Curvy", "Plus Size" ] }, unless: :admin_user?
 
   # Validate location presence for regular users
   validates :location, presence: true, unless: :admin_user?
@@ -26,7 +26,7 @@ class About < ApplicationRecord
   # Validate goal for regular users
   validates :goal,
             inclusion: {
-              in: ["Friendship", "Casual Dating", "Serious Relationship", "Exploring"]
+              in: [ "Friendship", "Casual Dating", "Serious Relationship", "Exploring" ]
             }, unless: :admin_user?
 
   # Custom photo validation to ensure at least one photo is attached and validates formats
