@@ -17,13 +17,13 @@
             <div class="flex items-center space-x-4">
               <div class="hidden lg:flex items-center space-x-8 xl:space-x-12">
                 <div class="space-x-2 flex items-center xl:space-x-4"> 
-                  <%= link_to edit_user_settings_path(current_user), class: "flex items-center p-2 rounded-lg hover:bg-gray-200 focus:outline-none" do %>
+                  <%= link_to edit_settings_path, class: "flex items-center p-2 rounded-lg hover:bg-gray-200 focus:outline-none" do %>
                     <%= inline_svg "Filter.svg", class: "h-5 w-5 xl:h-7 xl:w-7" %> 
                   <% end %>
-                  <%= link_to user_notifications_path(current_user), class: "flex items-center p-2 rounded-lg hover:bg-gray-200 focus:outline-none" do %>
+                  <%= link_to notifications_path, class: "flex items-center p-2 rounded-lg hover:bg-gray-200 focus:outline-none" do %>
                     <%= inline_svg "Notification.svg", class: "h-5 w-5 xl:h-7 xl:w-7" %>
                   <% end %>
-                  <%= link_to user_profile_path(current_user), class: "flex items-center p-2 rounded-lg hover:bg-gray-200 focus:outline-none" do %>
+                  <%= link_to profile_path, class: "flex items-center p-2 rounded-lg hover:bg-gray-200 focus:outline-none" do %>
                     <%= inline_svg "Profile.svg", class: "h-5 w-5 xl:h-7 xl:w-7" %>
                   <% end %>
                 </div>
@@ -95,7 +95,7 @@
 
       <ul class="mt-6 space-y-4">
         <% if user_signed_in? %>
-          <li><%= link_to "Settings", edit_user_settings_path(current_user), class: "text-gray-800 hover:text-gray-600" %></li>
+          <li><%= link_to "Settings", edit_settings_path, class: "text-gray-800 hover:text-gray-600" %></li>
         <% end %>
       </ul>
 

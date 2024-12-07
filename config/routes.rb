@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  get "upgrades/index"
+  # Likes and Matches routes for authenticated users
+  resources :likes, only: [ :index ]
+  resources :matches, only: [ :index ]
 
-  # User-specific routes
-  resources :users, only: [] do
-    resources :notifications, only: [ :index ]
-    resource :profile, only: [ :show, :edit, :update ]
-    resource :settings, only: [ :edit, :update ]
-  end
+  # notifications, profile and settings routes for authenticated users
+  resources :notifications, only: [ :index ]
+  resource :profile, only: [ :show, :edit, :update ]
+  resource :settings, only: [ :edit, :update ]
 
   # Upgrade route
   resources :upgrades, only: [ :index ] do
