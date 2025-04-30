@@ -68,7 +68,7 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 
   # Rspect testing framework [https://rspec.info/]
-  gem "rspec-rails", "~> 7.1"
+  gem "rspec-rails", "~> 8.0"
 
   # FactoryBot is a fixtures replacement with a more straightforward syntax [
   gem "factory_bot_rails"
